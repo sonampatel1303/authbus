@@ -1,0 +1,10 @@
+.product-list {
+    border: 1px solid red;
+  }
+  
+  .product-card {
+    background-color: #f0f0f0;
+    margin: 10px;
+    padding: 10px;
+  }
+  
