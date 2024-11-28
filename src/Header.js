@@ -33,8 +33,13 @@ const Header = () => {
           </li>
           {auth && (
             <li>
-              <Link to="/products">Products</Link>
-            </li>
+            <Link to="/bookingHistory">Booking History</Link> {/* Add this link */}
+          </li>
+          )}
+           {auth && (
+            <li>
+            <Link to="/findBus">Buses</Link> {/* Add this link */}
+          </li>
           )}
         </ul>
       </nav>

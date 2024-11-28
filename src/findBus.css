@@ -1,0 +1,69 @@
+/* BusRouteSearch.css */
+
+.search-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .routes-list {
+    margin-top: 20px;
+  }
+  
+  .route-card {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .route-card h3 {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .route-card p {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .route-card h4 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
+  

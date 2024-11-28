@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
+import BookingHistory from './bookingHistory';
+import BusRouteSearch from './findBus';
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoute />}>
-          <Route path="/products" element={<BookingList />} />
+          {/* <Route path="/bookingList" element={<BookingList />} /> */}
+          <Route path="/bookingHistory" element={<BookingHistory />} />
+          <Route path="/findBus" element={<BusRouteSearch />} />
         </Route>
       </Routes>
       <Footer />

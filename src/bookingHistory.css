@@ -1,0 +1,68 @@
+/* Overall container for the booking history page */
+.booking-history-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the input field for User ID */
+.user-id-input {
+  padding: 10px;
+  width: 60%;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styling the fetch button */
+.fetch-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.fetch-button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+/* Booking List container */
+.booking-list {
+  margin-top: 20px;
+}
+
+/* Individual Booking Item */
+.booking-item {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking-item h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Booking Details Section */
+.booking-details p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.booking-details strong {
+  color: #007bff;
+}
