@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getBookings } from "./Services/Booking.js";
+import { getBookings } from "../Services/Booking.js";
 import './Booking.css';
 
 const BookingList = () => {

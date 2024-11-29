@@ -1,0 +1,88 @@
+/* Header.css */
+header {
+  background-color: #222;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px; /* Center-align content with a max width */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space items out evenly */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a,
+nav ul li button {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+nav ul li a:hover,
+nav ul li button:hover {
+  background-color: #444; /* Slightly lighter background on hover */
+  color: #ffcc00; /* Accent color on hover */
+  border-radius: 5px;
+}
+
+nav ul li button {
+  font: inherit;
+}
+
+.logo {
+  height: 70px; /* Increase logo size */
+  width: 70px; /* Make it circular */
+  border-radius: 50%; /* Create a circle */
+  object-fit: cover; /* Ensures the image fits within the circle */
+  margin-right: 20px;
+  border: 3px solid white; /* Optional: add a border for emphasis */
+}
+
+nav ul li a.active {
+  color: #ffcc00; /* Highlight the active page link */
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: flex-start;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  nav ul li a,
+  nav ul li button {
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+}

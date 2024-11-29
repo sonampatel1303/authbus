@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
-import { login as loginService } from "./Services/AuthService";
+import { login as loginService } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import './Login.css'
-import bus1 from './images/bus1.jpg'
+import bus1 from '../images/bus1.jpg'
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -54,3 +54,4 @@ const Login = () => {
 };
 
 export default Login;
+

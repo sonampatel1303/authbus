@@ -1,0 +1,59 @@
+/* AdminCrud.css */
+
+/* Container for the form and action buttons */
+.admin-crud-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Title for the Admin CRUD section */
+.admin-crud-heading {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Admin form inputs */
+input {
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* Button styles */
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Error messages */
+span {
+    color: red;
+    font-weight: bold;
+}
+
+/* Display success or failure messages */
+.success-message, .error-message {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Users list section */
+.admin-users-list {
+    margin-top: 20px;
+}

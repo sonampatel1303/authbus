@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './findBus.css';
-import BookingForm from './Services/BookingForm';
+import BookingForm from '../Services/BookingForm';
 
 const BusRouteSearch = () => {
   const [source, setSource] = useState('');
