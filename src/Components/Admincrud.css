@@ -1,59 +1,149 @@
-/* AdminCrud.css */
-
-/* Container for the form and action buttons */
-.admin-crud-container {
+/* General container styling */
+.user-list {
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-/* Title for the Admin CRUD section */
-.admin-crud-heading {
-    text-align: center;
-    color: #333;
-    font-size: 24px;
+    background: linear-gradient(to bottom right, #f8ede3, #f5d7bb);
+    font-family: 'Poppins', sans-serif;
+    color: #5a3e2b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Titles */
+  h1, h2 {
+    color: #4a2f21;
+    font-weight: 700;
     margin-bottom: 20px;
-}
-
-/* Admin form inputs */
-input {
-    padding: 10px;
-    margin: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  }
+  
+  /* Grid layout for users */
+  .user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    list-style: none;
     width: 100%;
-}
-
-/* Button styles */
-button {
+    max-width: 1200px;
+    padding: 0;
+  }
+  
+  /* Individual user card styling */
+  .user-container {
+    background: linear-gradient(135deg, #d8b99c, #f2e2c4);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #5a3e2b;
+  }
+  
+  .user-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* User info display */
+  .user-container div {
+    font-size: 14px;
+    color: #4a2f21;
+  }
+  
+  .user-container div span {
+    font-weight: bold;
+  }
+  
+  /* Buttons inside user cards */
+  .buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-button,
+  .delete-button {
     padding: 10px 15px;
-    background-color: #28a745;
-    color: white;
+    font-size: 14px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .edit-button {
+    background-color: #a97752;
+    color: white;
+  }
+  
+  .edit-button:hover {
+    background-color: #8c6244;
+    box-shadow: 0 4px 8px rgba(169, 119, 82, 0.3);
+  }
+  
+  .delete-button {
+    background-color: #b8583d;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #9b4732;
+    box-shadow: 0 4px 8px rgba(184, 88, 61, 0.3);
+  }
+  
+  /* Form styling */
+  .user-info {
+    max-width: 450px;
+    background: linear-gradient(to bottom right, #fae4d1, #e2c1a8);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  
+  .user-info input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #c4a486;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .user-info input:focus {
+    outline: none;
+    border-color: #a97752;
+    box-shadow: 0 0 8px rgba(169, 119, 82, 0.3);
+  }
+  
+  /* Form submit button */
+  .user-info .edit-button {
+    width: 100%;
     margin-top: 10px;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-/* Error messages */
-span {
-    color: red;
-    font-weight: bold;
-}
-
-/* Display success or failure messages */
-.success-message, .error-message {
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Users list section */
-.admin-users-list {
-    margin-top: 20px;
-}
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 20px;
+  }
+  
+  /* Error message styling */
+  span {
+    font-size: 12px;
+    color: #b8583d;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .user-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .user-info {
+      max-width: 90%;
+    }
+  }
+  

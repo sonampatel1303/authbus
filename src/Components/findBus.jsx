@@ -93,8 +93,11 @@ const BusRouteSearch = () => {
           {routes.map((route) => (
             <div key={route.routeId} className="route-card">
               <h3>{`Route: ${route.sourcePoint} to ${route.destination}`}</h3>
-              <p>Departure: {new Date(route.departureTime).toLocaleString()}</p>
-              <p>Arrival: {new Date(route.arrivalTime).toLocaleString()}</p>
+              <p>Departure: {new Date(route.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+<p>Arrival: {new Date(route.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+
+              {/* <p>Departure: {new Date(route.departureTime).toLocaleString()}</p>
+              <p>Arrival: {new Date(route.arrivalTime).toLocaleString()}</p> */}
               <h4>Bus Information</h4>
               <p>Bus Name: {route.bus.busName}</p>
               <p>Bus Type: {route.bus.bustype}</p>

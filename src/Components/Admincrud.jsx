@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Admincrud.css';  // Ensure your custom CSS is applied
+import '../Components/Admincrud.css';  // Ensure your custom CSS is applied
 
 import {
   getUsers,
@@ -125,19 +125,30 @@ const User = () => {
   };
 
   return (
-    <div className="admin-crud-container">
-      <h1 className="admin-crud-heading">Users</h1>
-      <ul className="admin-users-list">
+    <div className="user-list">
+      <h1>Users</h1>
+      <ul className="user-grid">
         {users.map((user) => (
-          <li key={user.userId}>
-            {user.userName} - {user.phoneNumber} - {user.gender} - {user.email} - {user.address} - {user.role} - {user.dateCreated}
-            <button onClick={() => handleEdit(user)}>Edit</button>
-            <button onClick={() => handleDelete(user.userId)}>Delete</button>
+          <li key={user.userId} className="user-container">
+            <div>User Name : {user.userName}</div>
+            <div> Phone Number : {user.phoneNumber}</div>
+            <div> Gender : {user.gender}</div>
+            <div> Email : {user.email}</div>
+            <div> Address : {user.address}</div>
+            <div> Role : {user.role}</div>
+            <div> DateCreated : {user.dateCreated}</div>
+
+                
+            <div className="buttons">
+              <button className="edit-button" onClick={() => handleEdit(user)}>Edit</button>
+              <button className="delete-button" onClick={() => handleDelete(user.userId)}>Delete</button>
+            </div>
+           
           </li>
         ))}
       </ul>
 
-      <div className="admin-crud-form">
+      <div className="user-info">
         <h2>{isEdit ? "Edit User" : "Add New User"}</h2>
         <input
           type="text"
@@ -197,7 +208,7 @@ const User = () => {
         />
         {errors.dateCreated && <span style={{ color: "Red" }}>{errors.dateCreated}</span>}
 
-        <button onClick={isEdit ? handleUpdate : handleCreate}>
+        <button className="edit-button" onClick={isEdit ? handleUpdate : handleCreate}>
           {isEdit ? "Update" : "Add"}
         </button>
       </div>

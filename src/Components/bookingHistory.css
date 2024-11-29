@@ -1,68 +1,168 @@
-/* Overall container for the booking history page */
+/* Container for the booking history section */
 .booking-history-container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1270px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #f3e5d7; /* Light caramel background */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  color: #5a3e2b; /* Dark caramel text */
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Styling the input field for User ID */
+.booking-history-container:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Darker shadow for hover effect */
+}
+
+/* Title */
+.booking-history-container h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #5a3e2b;
+  margin-bottom: 20px;
+}
+
+/* Input field for User ID */
 .user-id-input {
-  padding: 10px;
-  width: 60%;
-  margin: 10px 0;
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 1px solid #d6b8a9; /* Soft caramel border */
+  border-radius: 8px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #f8f2ec; /* Very light caramel input background */
+  color: #5a3e2b;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Styling the fetch button */
+.user-id-input:focus {
+  box-shadow: 0 0 8px rgba(200, 150, 100, 0.7); /* Focus effect with shadow */
+  outline: none;
+}
+
+/* Fetch button */
 .fetch-button {
-  padding: 10px 20px;
-  background-color: #007bff;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #c19a6b; /* Caramel button background */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .fetch-button:hover {
-  background-color: #0056b3;
+  background-color: #a47551; /* Darker caramel hover effect */
+  transform: scale(1.05); /* Slight scale-up effect */
 }
 
-/* Error message styling */
+/* Error message */
 .error-message {
-  color: red;
+  color: #8c4f3b; /* Dark caramel red */
   font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
 }
 
-/* Booking List container */
+/* Filter buttons container */
+.filter-buttons {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+/* Individual filter buttons */
+.filter-buttons button {
+  margin: 5px;
+  padding: 12px 25px;
+  cursor: pointer;
+  background-color: #c19a6b; /* Caramel button */
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-buttons button.active {
+  background-color: #a47551; /* Darker caramel */
+}
+
+.filter-buttons button:hover {
+  background-color: #b68560;
+  transform: scale(1.05); /* Slight scale-up effect on hover */
+}
+
+/* Booking list container */
 .booking-list {
   margin-top: 20px;
 }
 
-/* Individual Booking Item */
+/* Individual booking item */
 .booking-item {
-  background-color: #ffffff;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ccaa87; /* Very light caramel for contrast */
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-item:hover {
+  transform: translateY(-5px); /* Elevate on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
 }
 
 .booking-item h3 {
-  font-size: 18px;
-  color: #333;
+  margin-bottom: 15px;
+  color: #5a3e2b;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-/* Booking Details Section */
+/* Booking details */
 .booking-details p {
-  font-size: 16px;
-  margin: 5px 0;
+  margin: 8px 0;
+  font-size: 15px;
+  color: #5a3e2b;
 }
 
-.booking-details strong {
-  color: #007bff;
+.booking-details p strong {
+  color: #8c4f3b;
+  font-weight: bold;
+}
+
+/* Cancel button */
+.cancel-button {
+  padding: 12px 20px;
+  background-color: #a44f41; /* Caramel red for cancel */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #8b3b30; /* Darker red caramel hover effect */
+  transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* No bookings message */
+.booking-list p {
+  text-align: left;
+  color: #5a3e2b;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+/* Add a glow effect to the cancel button on hover */
+.cancel-button:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

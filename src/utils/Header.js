@@ -50,7 +50,7 @@ const Header = () => {
           )}
            {auth && (
             <li>
-              <Link to="/admin">Admin</Link>
+              <Link to="/admins">Admin</Link>
             </li>
           )}
         </ul>

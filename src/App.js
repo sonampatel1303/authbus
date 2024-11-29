@@ -13,7 +13,8 @@ import Header from './utils/Header';
 import Footer from './utils/Footer';
 import BookingHistory from './Components/bookingHistory';
 import BusRouteSearch from './Components/findBus';
-import User from './Components/Admincrud';
+import AdminControl from './Components/AdminList';
+import Admin from './Components/Admincrud';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           {/* <Route path="/bookingList" element={<BookingList />} /> */}
           <Route path="/bookingHistory" element={<BookingHistory />} />
           <Route path="/findBus" element={<BusRouteSearch />} />
-          <Route path="/admin" element={<User />} />
+          <Route path="/admins" element={<Admin/>} />
         </Route>
       </Routes>
       <Footer />

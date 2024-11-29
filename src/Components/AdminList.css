@@ -1,0 +1,80 @@
+/* AdminList.css */
+.admin-list-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .admin-list-container h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .search-container, .filter-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-input, .role-filter {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .search-input:focus, .role-filter:focus {
+    outline-color: #6C63FF;
+  }
+  
+  .admin-user-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-user-card h4 {
+    color: #6C63FF;
+    margin-bottom: 10px;
+  }
+  
+  .admin-user-card p {
+    color: #555;
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .admin-user-card p strong {
+    color: #333;
+  }
+  
+  .no-users-message {
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+  }
+  
+  /* Mobile-friendly */
+  @media (max-width: 768px) {
+    .admin-list-container {
+      padding: 15px;
+    }
+  
+    .admin-user-card {
+      padding: 15px;
+    }
+  
+    .search-input, .role-filter {
+      font-size: 14px;
+    }
+  
+    .admin-list-container h3 {
+      font-size: 20px;
+    }
+  }
+  

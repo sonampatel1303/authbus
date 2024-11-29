@@ -7,6 +7,7 @@ const BookingHistory = () => {
   const [userId, setUserId] = useState("");
   const [bookingHistory, setBookingHistory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [filter, setFilter] = useState("all"); // 'all', 'past', 'future'
 
   // Access the token from AuthContext
   const { auth } = useContext(AuthContext);
@@ -28,7 +29,6 @@ const BookingHistory = () => {
       console.log('Response Status:', response.status); // Log the response status
       console.log('Response Data:', response.data); // Log the response to inspect the structure
 
-      // Ensure response contains data in the correct format
       if (response.status === 200 && response.data && response.data.$values) {
         setBookingHistory(response.data.$values); // Access the array from $values
         setErrorMessage(""); // Clear any error message if data is found
@@ -49,37 +49,45 @@ const BookingHistory = () => {
 
   const handleCancelBooking = async (bookingId) => {
     try {
-      // Make a PUT request to cancel the booking
       const response = await axios.put(
         `https://localhost:7201/api/Booking/${bookingId}`,
-        {},  // No body is needed as the ID is passed in the URL
+        {}, // No body is needed as the ID is passed in the URL
         {
           headers: {
-            Authorization: `Bearer ${auth}`,  // Send the token as a Bearer token
+            Authorization: `Bearer ${auth}`, // Send the token as a Bearer token
           }
         }
       );
 
       if (response.status === 200) {
-        // Filter out the cancelled booking from the booking history list
         setBookingHistory((prevHistory) =>
           prevHistory.filter((booking) => booking.bookingId !== bookingId)
         );
-        alert(response.data);  // Show the success message
+        alert(response.data); // Show the success message
       } else {
         alert("Failed to cancel booking.");
       }
     } catch (error) {
       console.error("Error cancelling booking:", error);
-
-      // Check if the error is related to the booking already being cancelled
       if (error.response && error.response.status === 400) {
-        alert(error.response.data);  // Display the custom error message
+        alert(error.response.data); // Display the custom error message
       } else {
         alert("An error occurred while cancelling the booking.");
       }
     }
   };
+
+  const filteredBookings = bookingHistory.filter((booking) => {
+    const bookingDate = new Date(booking.bookingDate);
+    const currentDate = new Date();
+    if (filter === "past") {
+      return bookingDate < currentDate;
+    }
+    if (filter === "future") {
+      return bookingDate >= currentDate;
+    }
+    return true; // Show all bookings if filter is 'all'
+  });
 
   return (
     <div className="booking-history-container">
@@ -95,13 +103,17 @@ const BookingHistory = () => {
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
+      <div className="filter-buttons">
+        <button onClick={() => setFilter("all")} className={filter === "all" ? "active" : ""}>All</button>
+        <button onClick={() => setFilter("past")} className={filter === "past" ? "active" : ""}>Past Bookings</button>
+        <button onClick={() => setFilter("future")} className={filter === "future" ? "active" : ""}>Future Bookings</button>
+      </div>
+
       <div className="booking-list">
-        {bookingHistory.length > 0 ? (
-          bookingHistory.map((booking) => {
-            // Check if the booking date is greater than the current date
+        {filteredBookings.length > 0 ? (
+          filteredBookings.map((booking) => {
             const bookingDate = new Date(booking.bookingDate);
-            const currentDate = new Date();
-            const canCancel = bookingDate > currentDate; // Allow cancel if booking date is in the future
+            const canCancel = bookingDate > new Date() && booking.bookingStatus !== "Cancelled";
 
             return (
               <div className="booking-item" key={booking.bookingId}>
@@ -109,13 +121,12 @@ const BookingHistory = () => {
                 <div className="booking-details">
                   <p><strong>Route ID:</strong> {booking.routeId}</p>
                   <p><strong>Number of Seats:</strong> {booking.numberofSeats}</p>
-                  <p><strong>Total Price:</strong> ${booking.totalPrice}</p>
+                  <p><strong>Total Price:</strong> {booking.totalPrice}</p>
                   <p><strong>Status:</strong> {booking.bookingStatus}</p>
                   <p><strong>Booking Date:</strong> {new Date(booking.bookingDate).toLocaleString()}</p>
                 </div>
 
-                {/* Only show the cancel button if the booking date is in the future */}
-                {canCancel && booking.bookingStatus !== "Cancelled" && (
+                {canCancel && (
                   <button onClick={() => handleCancelBooking(booking.bookingId)} className="cancel-button">
                     Cancel Booking
                   </button>

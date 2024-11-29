@@ -20,7 +20,12 @@ export const createUsers = async (user) => {
     try {
       console.log(user);
       console.log("CreateUser  Called from service");
-      const response = await axios.post(API_URL, user);
+      const token = localStorage.getItem("token");
+        const response = await axios.post(API_URL, user,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       console.log("resonse from api", response.data);
       return response.data;
     } catch (error) {
@@ -31,7 +36,12 @@ export const createUsers = async (user) => {
   
   export const updateUsers = async (userid, user) => {
     try {
-      const response = await axios.put(`${API_URL}?id=${userid}`, user);
+      const token = localStorage.getItem("token");
+      const response = await axios.put(`${API_URL}/${userid}`, user, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data;
     } catch (error) {
       console.error("Error While updating User", error);
@@ -39,14 +49,16 @@ export const createUsers = async (user) => {
     }
   };
   
-  export const deleteUsers = async (id, token) => {
+  export const deleteUsers = async (id) => {
     try {
-      await axios.delete(`${API_URL}?id=${id}`, 
+      const token = localStorage.getItem("token");
+      const response=await axios.delete(`${API_URL}/${id}`, 
         {
             headers: {
               Authorization: `Bearer ${token}`,  // Pass the token here
             },
           });
+      return response.data
       
     } catch (error) {
       console.error("Error While Deleting User", error);
