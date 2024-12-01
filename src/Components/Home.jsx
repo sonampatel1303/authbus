@@ -36,7 +36,7 @@ const Home = () => {
           <img src={img3} alt="Multiple Payment Modes" className="feature-image" />
           <h2>Multiple Payment Modes</h2>
           <p>Pay securely using your preferred method: Credit Card, UPI, Net Banking, or Wallets.</p>
-          <Link to="/payment" className="feature-link">Proceed to Payment</Link>
+          <Link to="/payments" className="feature-link">Proceed to Payment</Link>
         </div>
 
         <div className="feature">

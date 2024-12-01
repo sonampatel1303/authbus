@@ -145,5 +145,66 @@
     .user-info {
       max-width: 90%;
     }
+
+ /* General container styling for admin dashboard */
+.admin-dashboard {
+  padding: 20px;
+  background: linear-gradient(to bottom right, #f8ede3, #e9d8c6);
+  font-family: 'Poppins', sans-serif;
+  color: #5a3e2b;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.admin-dashboard h1 {
+  color: #4a2f21;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Dropdown styling */
+.admin-dashboard select {
+  width: 250px;
+  padding: 12px 15px;
+  border: 1px solid #c4a486;
+  border-radius: 8px;
+  background: #f2e2c4;
+  color: #5a3e2b;
+  font-size: 16px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-dashboard select:focus {
+  outline: none;
+  border-color: #a97752;
+  box-shadow: 0 0 8px rgba(169, 119, 82, 0.3);
+}
+
+.admin-dashboard option {
+  background: #f2e2c4;
+  color: #5a3e2b;
+  font-size: 16px;
+}
+
+/* Content container */
+.admin-dashboard div {
+  margin-top: 20px;
+}
+
+/* Add hover effect to dropdown for better interactivity */
+.admin-dashboard select:hover {
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .admin-dashboard select {
+    width: 90%;
+  }
+}
+
+
   }
   

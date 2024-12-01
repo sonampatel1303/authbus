@@ -53,6 +53,11 @@ const Header = () => {
               <Link to="/admins">Admin</Link>
             </li>
           )}
+            {auth && (
+            <li>
+              <Link to="/payments">Payment</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

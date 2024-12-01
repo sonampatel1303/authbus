@@ -1,0 +1,91 @@
+/* .seat-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  
+  .seat {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .seat.selected {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .seat.unavailable {
+    background-color: #d32f2f;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+  }
+   */
+   /* Seat Grid Styles */
+.seat-grid {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .seat {
+    width: 40px;
+    height: 40px;
+    background-color: #e1e1e1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .seat:hover {
+    background-color: #ff9800;
+    transform: scale(1.1);
+  }
+  
+  .seat.selected {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .seat:disabled {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 600px) {
+    .seat {
+      width: 35px;
+      height: 35px;
+      font-size: 14px;
+    }
+  }
+  

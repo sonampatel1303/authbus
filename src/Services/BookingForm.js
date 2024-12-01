@@ -1,17 +1,19 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './BookingForm.css'
 const BookingForm = ({ route, onClose }) => {
   const [bookingDetails, setBookingDetails] = useState({
     userId: '', // This will be entered manually by the user
     routeId: route.routeId,
-    numberOfSeats: 1,
+    numberofSeats: 1, // Default value is 1
     totalPrice: route.bus.pricePerSeat,
     bookingDate: new Date().toISOString().slice(0, 16), // Default to current date and time, formatted for datetime-local
     bookingStatus: 'Booked', // Default status
     paymentMode: 'Online',  // Default payment mode
   });
-  
+
+  const [selectedSeats, setSelectedSeats] = useState([]); // Store selected seats as an array
   const [error, setError] = useState('');
   const [paymentError, setPaymentError] = useState('');
 
@@ -20,12 +22,27 @@ const BookingForm = ({ route, onClose }) => {
     setBookingDetails((prevDetails) => ({
       ...prevDetails,
       [name]: value,
-      totalPrice: name === 'numberOfSeats' ? value * route.bus.pricePerSeat : prevDetails.totalPrice,
+      totalPrice: name === 'numberofSeats' ? value * route.bus.pricePerSeat : prevDetails.totalPrice,
     }));
   };
 
+  // Handle seat selection
+  const toggleSeatSelection = (seatNumber) => {
+    setSelectedSeats((prevSeats) => {
+      const updatedSeats = prevSeats.includes(seatNumber)
+        ? prevSeats.filter((seat) => seat !== seatNumber) // Unselect the seat if already selected
+        : [...prevSeats, seatNumber]; // Select the seat
+      const updatedNumberOfSeats = updatedSeats.length;
+      setBookingDetails((prevDetails) => ({
+        ...prevDetails,
+        numberofSeats: updatedNumberOfSeats,
+        totalPrice: updatedNumberOfSeats * route.bus.pricePerSeat,
+      }));
+      return updatedSeats;
+    });
+  };
+
   const submitBooking = () => {
-    // Reset error messages before submitting
     setError('');
     setPaymentError('');
 
@@ -78,6 +95,11 @@ const BookingForm = ({ route, onClose }) => {
   // Get today's date and time in the format required for datetime-local input
   const today = new Date().toISOString().slice(0, 16); // "yyyy-mm-ddThh:mm"
 
+  // Dynamically generate seat grid based on route.bus.numberofSeats
+  const totalSeats = route.bus.numberofSeats; // Get total seats from the bus details
+  const seatsPerRow = 4; // 4 seats per row
+  const seatRows = Math.ceil(totalSeats / seatsPerRow); // Calculate the number of rows
+
   return (
     <div className="booking-form">
       <h2>Book Ticket</h2>
@@ -105,16 +127,39 @@ const BookingForm = ({ route, onClose }) => {
             readOnly
           />
         </div>
+
+        {/* Seat Selection Grid */}
+        <div className="seat-grid">
+          <h3>Select Seats</h3>
+          {Array.from({ length: seatRows }, (_, rowIndex) => (
+            <div key={rowIndex} className="seat-row">
+              {Array.from({ length: seatsPerRow }, (_, seatIndex) => {
+                const seatNumber = rowIndex * seatsPerRow + seatIndex + 1;
+                if (seatNumber > totalSeats) return null; // Skip rendering extra seats
+                const isSelected = selectedSeats.includes(seatNumber);
+                return (
+                  <button
+                    type="button"
+                    key={seatNumber}
+                    className={`seat ${isSelected ? 'selected' : ''}`}
+                    onClick={() => toggleSeatSelection(seatNumber)}
+                  >
+                    {seatNumber}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+
         <div>
-          <label htmlFor="numberOfSeats">Number of Seats</label>
+          <label htmlFor="numberofSeats">Number of Seats</label>
           <input
             type="number"
-            id="numberOfSeats"
-            name="numberOfSeats"
-            value={bookingDetails.numberOfSeats}
-            onChange={handleBookingChange}
-            min="1"
-            required
+            id="numberofSeats"
+            name="numberofSeats"
+            value={bookingDetails.numberofSeats}
+            readOnly
           />
         </div>
         <div>
