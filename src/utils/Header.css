@@ -1,39 +1,38 @@
-/* Header.css */
 header {
-  background-color: #222;
-  color: white;
-  padding: 15px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+  background-color: #d2a679; /* Caramel background color */
+  color: #fff8e1; /* Light cream text color */
+  padding: 5px 0; /* Reduce vertical padding to lower height */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 nav {
-  max-width: 1200px; /* Center-align content with a max width */
+  max-width: 960px; /* Reduce max width for a narrower layout */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 nav ul {
   list-style-type: none;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space items out evenly */
+  justify-content: space-between;
   margin: 0;
   padding: 0;
 }
 
 nav ul li {
-  margin: 0 10px;
+  margin: 0 8px;
 }
 
 nav ul li a,
 nav ul li button {
-  color: white;
+  color: #fff8e1; /* Light cream text color */
   text-decoration: none;
-  font-size: 16px;
-  padding: 10px 20px;
+  font-size: 14px; /* Slightly smaller font size */
+  padding: 6px 12px; /* Reduce padding for smaller buttons */
   transition: all 0.3s ease;
   border: none;
   background: none;
@@ -42,32 +41,28 @@ nav ul li button {
 
 nav ul li a:hover,
 nav ul li button:hover {
-  background-color: #444; /* Slightly lighter background on hover */
-  color: #ffcc00; /* Accent color on hover */
-  border-radius: 5px;
-}
-
-nav ul li button {
-  font: inherit;
+  background-color: #c49769; /* Slightly darker caramel on hover */
+  color: #fff; /* Brighten text color on hover */
+  border-radius: 4px;
 }
 
 .logo {
-  height: 70px; /* Increase logo size */
-  width: 70px; /* Make it circular */
-  border-radius: 50%; /* Create a circle */
-  object-fit: cover; /* Ensures the image fits within the circle */
-  margin-right: 20px;
-  border: 3px solid white; /* Optional: add a border for emphasis */
+  height: 40px; /* Reduce logo size */
+  width: 40px; /* Ensure the logo stays circular */
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 2px solid #fff8e1; /* Cream border for emphasis */
 }
 
 nav ul li a.active {
-  color: #ffcc00; /* Highlight the active page link */
+  color: #fff; /* White text for active link */
   font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
   nav ul {
-    flex-direction: column; /* Stack items vertically on smaller screens */
+    flex-direction: column; 
     align-items: flex-start;
   }
 
@@ -77,7 +72,7 @@ nav ul li a.active {
 
   nav ul li a,
   nav ul li button {
-    padding: 10px;
+    padding: 6px;
     width: 100%;
     text-align: left;
   }

@@ -3,6 +3,8 @@ import { Link, Route, Routes } from 'react-router-dom';
 import UserCRUD from '../Components/Usercrud';  // Make sure this path is correct
 import OperatorCRUD from '../Components/Operatorcrud';  // Make sure this path is correct
 import './AdminDashboard.css'
+import BusCRUD from '../Components/BusCrud';
+import BusRouteCRUD from '../Components/BusRouteCrud';
 const AdminDashboard = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -17,11 +19,15 @@ const AdminDashboard = () => {
       <option value="">Select an option</option>
       <option value="users">Users</option>
       <option value="operators">Bus Operators</option>
+      <option value="bus">Buses</option>
+      <option value="busRoute">Bus Routes</option>
     </select>
   
     <div>
       {selectedOption === 'users' && <UserCRUD />}
       {selectedOption === 'operators' && <OperatorCRUD />}
+      {selectedOption === 'bus' && <BusCRUD />}
+      {selectedOption === 'busRoute' && <BusRouteCRUD />}
     </div>
   </div>
   

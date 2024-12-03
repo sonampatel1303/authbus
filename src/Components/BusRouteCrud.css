@@ -1,0 +1,161 @@
+/* Styling for the BusRouteCrud component */
+
+/* Container for the BusRouteCrud component */
+.bus-route-crud-container {
+    padding: 20px;
+    background-color: #f6f1e1; /* Soft beige background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Search form styles */
+  .search-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .search-form input {
+    padding: 10px;
+    font-size: 1em;
+    width: 200px;
+    border: 1px solid #c68c53; /* Light caramel border */
+    border-radius: 8px;
+    color: #5c4033;
+  }
+  
+  .search-form button {
+    padding: 10px 20px;
+    background-color: #c68c53; /* Caramel button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-form button:hover {
+    background-color: #9f7032; /* Darker caramel on hover */
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #9f3a38; /* Error red */
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.1em;
+  }
+  
+  /* Styling for the list of bus routes */
+  .bus-routes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px; /* Increased margin to prevent overlap */
+    width: 100%;
+  }
+  
+  /* Styling for each bus route card */
+  .bus-route-card {
+    background-color: #f1e0c6; /* Light caramel background for each card */
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    min-height: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Hover effect for cards */
+  .bus-route-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Bus route card title */
+  .bus-route-card h3 {
+    font-size: 1.3em;
+    color: #4e2a1f; /* Dark caramel */
+    margin-bottom: 10px;
+  }
+  
+  /* Bus route details in the card */
+  .bus-route-card p {
+    font-size: 1em;
+    color: #5c4033; /* Caramel brown text */
+    margin: 8px 0;
+  }
+  
+  /* Edit and Delete buttons in the bus route card */
+  .bus-route-card button {
+    background-color: #c68c53;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    margin-top: 10px;
+  }
+  
+  .bus-route-card button:hover {
+    background-color: #9f7032; /* Darker caramel on hover */
+  }
+  
+  /* Form for creating/updating bus routes */
+  .bus-route-form {
+    background-color: #f1e0c6; /* Light caramel */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    width: 400px;
+    margin-bottom: 40px; /* Added margin-bottom to prevent overlap */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Input fields in the form */
+  .bus-route-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #c68c53;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #5c4033;
+  }
+  
+  .bus-route-form input:focus {
+    outline: none;
+    border-color: #9f7032; /* Darker border on focus */
+  }
+  
+  /* Submit button in the form */
+  .bus-route-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #c68c53;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bus-route-form button:hover {
+    background-color: #9f7032; /* Darker caramel on hover */
+  }
+  
