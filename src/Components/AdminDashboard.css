@@ -1,56 +1,55 @@
 /* Admin dashboard container styling */
 .admin-dashboard {
-    padding: 30px;
-    background: linear-gradient(to bottom right, #f8ede3, #e9d8c6);
-    font-family: 'Poppins', sans-serif;
-    color: #5a3e2b;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-  }
-  
-  .admin-dashboard h1 {
-    color: #4a2f21;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  
-  /* Dropdown styling */
+  padding: 30px;
+  background: linear-gradient(to bottom right, #e3f2fd, #bbdefb); /* Light blue gradient */
+  font-family: 'Poppins', sans-serif;
+  color: #0d47a1; /* Deep blue text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+.admin-dashboard h1 {
+  color: #1565c0; /* Brighter blue for headings */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Dropdown styling */
+.admin-dashboard select {
+  width: 300px;
+  padding: 12px 15px;
+  border: 2px solid #90caf9; /* Soft blue border */
+  border-radius: 10px;
+  background: #e3f2fd; /* Light blue background */
+  color: #0d47a1; /* Deep blue text */
+  font-size: 16px;
+  margin-bottom: 30px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-dashboard select:focus {
+  outline: none;
+  border-color: #1976d2; /* Brighter blue focus */
+  box-shadow: 0 0 8px rgba(25, 118, 210, 0.3); /* Blue glow effect */
+}
+
+.admin-dashboard option {
+  background: #e3f2fd; /* Light blue option background */
+  color: #0d47a1;
+}
+
+/* Center content spacing */
+.admin-dashboard div {
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .admin-dashboard select {
-    width: 300px;
-    padding: 12px 15px;
-    border: 2px solid #c4a486;
-    border-radius: 10px;
-    background: #f2e2c4;
-    color: #5a3e2b;
-    font-size: 16px;
-    margin-bottom: 30px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .admin-dashboard select:focus {
-    outline: none;
-    border-color: #a97752;
-    box-shadow: 0 0 8px rgba(169, 119, 82, 0.3);
-  }
-  
-  .admin-dashboard option {
-    background: #f2e2c4;
-    color: #5a3e2b;
-  }
-  
-  /* Center content spacing */
-  .admin-dashboard div {
-    margin-top: 20px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .admin-dashboard select {
       width: 90%;
-    }
   }
-  
+}

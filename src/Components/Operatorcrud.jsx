@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import '../Components/Admincrud.css';
 import {
     getOperators,
@@ -6,207 +6,182 @@ import {
     updateOperators,
     deleteOperators
 } from "../Services/AdminService";
+import { toast } from "react-toastify";
 
-const Operator = () => {
-    const [operators, setOperators] = useState([]);  // Store operators data
-    const [newOperator, setNewOperator] = useState({
+const Operator = () =>{
+      const [operators, setOperators] = useState([]);  // Store users data
+      const [newOperator, setNewOperator] = useState({
         operatorId: 0,
         operatorName: "",
         operatorPhone: "",
         dateCreated: "",
-        busId: ""
-    });
+        busId:""
+      });
 
-    const [editOperatorId, setEditOperatorId] = useState(null);  // Track operator being edited
+    const [isEdit, setIsEdit] = useState(false);  // Track edit state
     const [errors, setErrors] = useState({
         operatorName: "",
         operatorPhone: "",
         dateCreated: "",
-        busId: ""
+        busId:""
     });
-
     useEffect(() => {
-        fetchOperators();
-    }, []);
-
-    const fetchOperators = async () => {
+        fetchOperators();  // Fetch operaters when component mounts
+      }, []);
+    
+      const fetchOperators = async () => {
         try {
-            const data = await getOperators();
-            if (data && data.$values) {
-                setOperators(data.$values);
-            } else {
-                console.log("Invalid data structure", data);
-            }
+          const data = await getOperators();  // Call the backend API to get users
+          if (data && data.$values) {
+            setOperators(data.$values);  // Set operators if the response is valid
+          } else {
+            console.log("Invalid data structure", data);
+          }
         } catch (error) {
-            console.log("Error fetching operators:", error);
+          console.log("Error fetching operators:", error);
         }
-    };
-
-    const validateForm = () => {
+      };
+      const validateForm = () => {
         let formErrors = {};
         if (!newOperator.operatorName) formErrors.operatorName = "Name Required.";
-        if (!newOperator.operatorPhone) formErrors.operatorPhone = "Phone Number Required.";
+        if (!newOperator.operatorPhone) formErrors.phoneNumber = "Phone Number Required.";
         if (!newOperator.dateCreated) formErrors.dateCreated = "Date Required.";
         if (!newOperator.busId) formErrors.busId = "Bus ID Required.";
-
+        
         setErrors(formErrors);
         return Object.keys(formErrors).length === 0;
-    };
-
-    const handleCreate = async () => {
+      };
+      const handleCreate = async () => {
         if (!validateForm()) return;
-
+    
         try {
-            await createOperators(newOperator);
-            fetchOperators();
-            setNewOperator({
-                operatorId: 0,
-                operatorName: "",
-                operatorPhone: "",
-                dateCreated: "",
-                busId: ""
-            });
+          await createOperators(newOperator);  // Create new user through the service
+          fetchOperators();  // Reload the user list
+          setNewOperator({
+            operatorId: 0,
+            operatorName: "",
+            operatorPhone: "",
+            dateCreated: "",
+            busId:""
+          });
+          toast.success("A new BusOperator was created successfully!")
         } catch (error) {
-            console.log("Error creating operator:", error);
+          console.log("Error creating Operator:", error);
         }
-    };
-
-    const handleUpdate = async () => {
+      };
+      const handleUpdate = async () => {
         if (!validateForm()) return;
-
+    
         try {
-            await updateOperators(newOperator.operatorId, newOperator);
-            setOperators(operators.map((operator) =>
-                operator.operatorId === newOperator.operatorId ? newOperator : operator
-            ));
-            setEditOperatorId(null);
-            setNewOperator({
-                operatorId: 0,
-                operatorName: "",
-                operatorPhone: "",
-                dateCreated: "",
-                busId: ""
-            });
+          await updateOperators(newOperator.operatorId, newOperator);  // Update the existing user
+          setOperators(
+            operators.map((operator) =>
+              operator.operatorId === newOperator.operatorId ? newOperator : operator
+            )
+          );
+          setIsEdit(false);
+          setNewOperator({
+            operatorId: 0,
+            operatorName: "",
+            operatorPhone: "",
+            dateCreated: "",
+            busId:""
+          });
+          toast.success("BusOperator updated successfully!")
         } catch (error) {
-            console.log("Error updating operator:", error);
+          console.log("Error updating operator:", error);
         }
-    };
-
-    const handleEdit = (operator) => {
-        setNewOperator(operator);
-        setEditOperatorId(operator.operatorId);
-    };
-
-    const handleDelete = async (id) => {
+      };
+      const handleEdit = (operator) => {
+        setNewOperator(operator);  // Pre-fill the form with the selected user's data
+        setIsEdit(true);  // Set editing state to true
+      };
+      const handleDelete = async (id) => {
         try {
-            const token = localStorage.getItem('token');
-            await deleteOperators(id, token);
-            setOperators(operators.filter((operator) => operator.operatorId !== id));
+          const token = localStorage.getItem('token');
+          await deleteOperators(id, token);  // Call the delete user API
+          setOperators(operators.filter((operator) => operator.operatorId !== id));
+          toast.success("BusOperator deleted successfully!")  // Remove deleted user from state
         } catch (error) {
-            console.log("Error deleting operator:", error);
+          console.log("Error deleting operator:", error);
         }
-    };
+      };
 
-    return (
+      return (
         <div className="user-list">
             <h1>Bus Operators</h1>
-            <ul className="user-grid">
+                <ul className="user-grid">
                 {operators.map((operator) => (
-                    <li key={operator.operatorId} className="user-container">
-                        <div>Operator Name: {operator.operatorName}</div>
-                        <div>Phone Number: {operator.operatorPhone}</div>
-                        <div>Date Created: {operator.dateCreated}</div>
-                        <div>Bus ID: {operator.busId}</div>
+                <li key={operator.operatorId} className="user-container">
+                    <div>Operator Name : {operator.operatorName}</div>
+                    <div> Phone Number : {operator.operatorPhone}</div>
+                    <div> DateCreated : {operator.dateCreated}</div>
+                    <div> Bus ID : {operator.busId}</div>
+                    
 
-                        <div className="buttons">
-                            <button className="edit-button" onClick={() => handleEdit(operator)}>Edit</button>
-                            <button className="delete-button" onClick={() => handleDelete(operator.operatorId)}>Delete</button>
-                        </div>
-
-                        {editOperatorId === operator.operatorId && (
-                            <div className="user-info">
-                                <h2>Edit Operator</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Operator Name"
-                                    value={newOperator.operatorName}
-                                    onChange={(e) => setNewOperator({ ...newOperator, operatorName: e.target.value })}
-                                />
-                                {errors.operatorName && <span style={{ color: "Red" }}>{errors.operatorName}</span>}
-
-                                <input
-                                    type="text"
-                                    placeholder="Phone Number"
-                                    value={newOperator.operatorPhone}
-                                    onChange={(e) =>
-                                        setNewOperator({ ...newOperator, operatorPhone: e.target.value })
-                                    }
-                                />
-                                {errors.operatorPhone && <span style={{ color: "Red" }}>{errors.operatorPhone}</span>}
-
-                                <input
-                                    type="datetime-local"
-                                    placeholder="Date Created"
-                                    value={newOperator.dateCreated}
-                                    onChange={(e) => setNewOperator({ ...newOperator, dateCreated: e.target.value })}
-                                />
-                                {errors.dateCreated && <span style={{ color: "Red" }}>{errors.dateCreated}</span>}
-
-                                <input
-                                    type="text"
-                                    placeholder="Bus ID"
-                                    value={newOperator.busId}
-                                    onChange={(e) => setNewOperator({ ...newOperator, busId: e.target.value })}
-                                />
-                                {errors.busId && <span style={{ color: "Red" }}>{errors.busId}</span>}
-
-                                <button className="edit-button" onClick={handleUpdate}>Update</button>
-                            </div>
-                        )}
-                    </li>
+                        
+                    <div className="buttons">
+                    <button className="edit-button" onClick={() => handleEdit(operator)}>Edit</button>
+                    <button className="delete-button" onClick={() => handleDelete(operator.operatorId)}>Delete</button>
+                    </div>
+                
+                </li>
                 ))}
             </ul>
 
             <div className="user-info">
-                <h2>Add New Operator</h2>
-                <input
-                    type="text"
-                    placeholder="Operator Name"
-                    value={newOperator.operatorName}
-                    onChange={(e) => setNewOperator({ ...newOperator, operatorName: e.target.value })}
-                />
-                {errors.operatorName && <span style={{ color: "Red" }}>{errors.operatorName}</span>}
+                <h2>{isEdit ? "Edit Operator" : "Add New Operator"}</h2>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Operator Name"
+                        value={newOperator.operatorName}
+                        onChange={(e) => setNewOperator({ ...newOperator, operatorName: e.target.value })}
+                    />
+                    {errors.operatorName && <span style={{ color: "Red" }}>{errors.operatorName}</span>}
+                </div>
 
-                <input
-                    type="text"
-                    placeholder="Phone Number"
-                    value={newOperator.operatorPhone}
-                    onChange={(e) =>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Phone Number"
+                        value={newOperator.operatorPhone}
+                        onChange={(e) =>
                         setNewOperator({ ...newOperator, operatorPhone: e.target.value })
-                    }
-                />
-                {errors.operatorPhone && <span style={{ color: "Red" }}>{errors.operatorPhone}</span>}
+                        }
+                    />
+                    {errors.operatorPhone && <span style={{ color: "Red" }}>{errors.operatorPhone}</span>}
+                    </div>
+                    <div>
+                        <input
+                            type="datetime-local"
+                            placeholder="Date Created"
+                            value={newOperator.dateCreated}
+                            onChange={(e) => setNewOperator({ ...newOperator, dateCreated: e.target.value })}
+                        />
+                        {errors.dateCreated && <span style={{ color: "Red" }}>{errors.dateCreated}</span>}
+                    </div>
 
-                <input
-                    type="datetime-local"
-                    placeholder="Date Created"
-                    value={newOperator.dateCreated}
-                    onChange={(e) => setNewOperator({ ...newOperator, dateCreated: e.target.value })}
-                />
-                {errors.dateCreated && <span style={{ color: "Red" }}>{errors.dateCreated}</span>}
 
-                <input
-                    type="text"
-                    placeholder="Bus ID"
-                    value={newOperator.busId}
-                    onChange={(e) => setNewOperator({ ...newOperator, busId: e.target.value })}
-                />
-                {errors.busId && <span style={{ color: "Red" }}>{errors.busId}</span>}
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Bus ID"
+                            value={newOperator.busId}
+                            onChange={(e) => setNewOperator({ ...newOperator, busId: e.target.value })}
+                        />
+                        {errors.busId && <span style={{ color: "Red" }}>{errors.busId}</span>}
+                    </div>
 
-                <button className="edit-button" onClick={handleCreate}>Add</button>
+                    <button className="edit-button" onClick={isEdit ? handleUpdate : handleCreate}>
+                        {isEdit ? "Update" : "Add"}
+                    </button>
+
             </div>
-        </div>
-    );
-};
 
+
+
+        </div>
+      )
+}
 export default Operator;

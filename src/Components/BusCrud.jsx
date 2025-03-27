@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import '../Components/Admincrud.css';
 import {
     getBuses,
@@ -6,6 +6,8 @@ import {
     updateBuses,
     deleteBuses
 } from "../Services/AdminService";
+import { toast } from "react-toastify";
+import AuthContext from "./AuthContext";
 
 const Bus = () => {
     const [buses, setBuses] = useState([]);  // Store users data
@@ -25,6 +27,9 @@ const Bus = () => {
         numberofSeats:"",
         pricePerSeat:""
     });
+
+    const { auth } = useContext(AuthContext);
+
     useEffect(() => {
         fetchBuses();  // Fetch Buses when component mounts
       }, []);
@@ -54,6 +59,11 @@ const Bus = () => {
       };
       const handleCreate = async () => {
         if (!validateForm()) return;
+
+        if (auth && auth.role === "BusOperator") {
+          toast.error("Bus Operators cannot create buses.");
+          return;
+         }
     
         try {
           await createBuses(newBus);  // Create new user through the service
@@ -66,6 +76,7 @@ const Bus = () => {
             numberofSeats:"",
             pricePerSeat:""
           });
+          toast.success("A new Bus was created Successfully!!!")
         } catch (error) {
           console.log("Error creating Bus:", error);
         }
@@ -89,6 +100,7 @@ const Bus = () => {
             numberofSeats:"",
             pricePerSeat:""
           });
+          toast.success("Bus Updated Successfully!")
         } catch (error) {
           console.log("Error updating bus:", error);
         }
@@ -98,10 +110,15 @@ const Bus = () => {
         setIsEdit(true);  // Set editing state to true
       };
       const handleDelete = async (id) => {
+        if (auth && auth.role === "BusOperator") {
+          toast.error("Bus Operators cannot delete buses.");
+          return;
+        }
         try {
           const token = localStorage.getItem('token');
           await deleteBuses(id, token);  // Call the delete user API
           setBuses(buses.filter((bus) => bus.busId !== id));  // Remove deleted user from state
+          toast.success("Bus deleted successfully!")
         } catch (error) {
           console.log("Error deleting bus:", error);
         }

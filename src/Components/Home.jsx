@@ -1,12 +1,26 @@
-import React from "react";
+import React, {useEffect, useContext}from "react";
 import { Link } from "react-router-dom";
 import img1 from '../images/image1.jpg';
 import img2 from '../images/image2.jpg';
 import img3 from '../images/image3.jpg';
 import img4 from '../images/image4.jpg';
 import "./Home.css";
+import { toast } from "react-toastify";
+import AuthContext from "./AuthContext";
+
 
 const Home = () => {
+  const {auth} = useContext(AuthContext);
+
+  useEffect(() => {
+    if (auth && auth.role === 'User') { 
+      toast.success('Welcome User!', {
+        position: 'top-right',
+        autoClose: 3000,
+        toastId: 'welcome-user-toast',
+      });
+    }
+  }, [auth]);
   return (
     <main className="home-container">
       <section className="hero">

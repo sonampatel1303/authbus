@@ -1,140 +1,139 @@
 /* AdminList.css */
 .admin-list-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  
-  .admin-list-container h3 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .search-container, .filter-container {
-    margin-bottom: 20px;
-  }
-  
-  .search-input, .role-filter {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .search-input:focus, .role-filter:focus {
-    outline-color: #6C63FF;
-  }
-  
-  .admin-user-card {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .admin-user-card h4 {
-    color: #6C63FF;
-    margin-bottom: 10px;
-  }
-  
-  .admin-user-card p {
-    color: #555;
-    font-size: 16px;
-    margin: 5px 0;
-  }
-  
-  .admin-user-card p strong {
-    color: #333;
-  }
-  
-  .no-users-message {
-    font-size: 18px;
-    color: #888;
-    text-align: center;
-  }
-  
-  /* Mobile-friendly */
-  @media (max-width: 768px) {
-    .admin-list-container {
-      padding: 15px;
-    }
-  
-    .admin-user-card {
-      padding: 15px;
-    }
-  
-    .search-input, .role-filter {
-      font-size: 14px;
-    }
-  
-    .admin-list-container h3 {
-      font-size: 20px;
-    }
-
-    /* General container styling for admin dashboard */
-.admin-dashboard {
   padding: 20px;
-  background: linear-gradient(to bottom right, #f8ede3, #e9d8c6);
-  font-family: 'Poppins', sans-serif;
-  color: #5a3e2b;
-  min-height: 100vh;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.admin-list-container h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.search-container, .filter-container {
+  margin-bottom: 20px;
+}
+
+.search-input, .role-filter {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.search-input:focus, .role-filter:focus {
+  outline-color: #6C63FF;
+}
+
+.admin-user-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-user-card h4 {
+  color: #6C63FF;
+  margin-bottom: 10px;
+}
+
+.admin-user-card p {
+  color: #555;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.admin-user-card p strong {
+  color: #333;
+}
+
+.no-users-message {
+  font-size: 18px;
+  color: #888;
   text-align: center;
 }
 
+/* Mobile-friendly */
+@media (max-width: 768px) {
+  .admin-list-container {
+    padding: 15px;
+  }
+
+  .admin-user-card {
+    padding: 15px;
+  }
+
+  .search-input, .role-filter {
+    font-size: 14px;
+  }
+
+  .admin-list-container h3 {
+    font-size: 20px;
+  }
+
+  /* General container styling for admin dashboard */
+.admin-dashboard {
+padding: 20px;
+background: linear-gradient(to bottom right, #f8ede3, #e9d8c6);
+font-family: 'Poppins', sans-serif;
+color: #5a3e2b;
+min-height: 100vh;
+text-align: center;
+}
+
 .admin-dashboard h1 {
-  color: #4a2f21;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+color: #4a2f21;
+font-size: 2rem;
+font-weight: bold;
+margin-bottom: 20px;
 }
 
 /* Dropdown styling */
 .admin-dashboard select {
-  width: 250px;
-  padding: 12px 15px;
-  border: 1px solid #c4a486;
-  border-radius: 8px;
-  background: #f2e2c4;
-  color: #5a3e2b;
-  font-size: 16px;
-  margin-bottom: 20px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+width: 250px;
+padding: 12px 15px;
+border: 1px solid #c4a486;
+border-radius: 8px;
+background: #f2e2c4;
+color: #5a3e2b;
+font-size: 16px;
+margin-bottom: 20px;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .admin-dashboard select:focus {
-  outline: none;
-  border-color: #a97752;
-  box-shadow: 0 0 8px rgba(169, 119, 82, 0.3);
+outline: none;
+border-color: #a97752;
+box-shadow: 0 0 8px rgba(169, 119, 82, 0.3);
 }
 
 .admin-dashboard option {
-  background: #f2e2c4;
-  color: #5a3e2b;
-  font-size: 16px;
+background: #f2e2c4;
+color: #5a3e2b;
+font-size: 16px;
 }
 
 /* Content container */
 .admin-dashboard div {
-  margin-top: 20px;
+margin-top: 20px;
 }
 
 /* Add hover effect to dropdown for better interactivity */
 .admin-dashboard select:hover {
-  cursor: pointer;
+cursor: pointer;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .admin-dashboard select {
-    width: 90%;
-  }
+.admin-dashboard select {
+  width: 90%;
+}
 }
 
-  }
-  
+}

@@ -1,16 +1,18 @@
 .payment-container {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f1e1; /* Light caramel background */
+  background-color: #eaf4ff; /* Light blue background */
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .payment-container h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
   text-align: center;
-  color: #8f6e4e; /* Caramel color */
+  color: #4a90e2; /* Vibrant blue */
   font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .payment-container ul {
@@ -19,17 +21,17 @@
 }
 
 .payment-container li {
-  background-color: #fff7e1; /* Soft cream background for each item */
+  background-color: #f0f8ff; /* Soft blue item background */
   padding: 15px;
   margin: 10px 0;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .payment-container li:hover {
-  background-color: #f3e2c7; /* Darker caramel on hover */
-  transform: translateY(-5px); /* Hover effect */
+  background-color: #d6eaff; /* Slightly darker blue on hover */
+  transform: translateY(-5px);
 }
 
 .payment-container li div {
@@ -39,7 +41,7 @@
 .payment-container h2 {
   font-size: 1.8em;
   margin-bottom: 15px;
-  color: #8f6e4e;
+  color: #4a90e2;
   font-weight: bold;
 }
 
@@ -48,21 +50,21 @@
   padding: 12px;
   margin: 10px 0;
   border-radius: 6px;
-  border: 1px solid #c2a97d; /* Light brown border */
+  border: 1px solid #97c3e6; /* Light blue border */
   font-size: 1em;
-  background-color: #fdf5e6; /* Light caramel fill */
-  color: #4e4b3e; /* Deep brown text */
+  background-color: #f0f8ff; /* Soft blue fill */
+  color: #2b3e50; /* Dark blue text */
 }
 
 .payment-container input:focus {
-  border-color: #8f6e4e; /* Darker caramel on focus */
+  border-color: #4a90e2; /* Vibrant blue on focus */
   outline: none;
-  background-color: #fff0d4; /* Focused light caramel */
+  background-color: #e3f2ff; /* Slightly lighter blue on focus */
 }
 
 .payment-container button {
   padding: 12px 20px;
-  background-color: #8f6e4e; /* Caramel button */
+  background-color: #4a90e2; /* Vibrant blue button */
   color: white;
   border: none;
   border-radius: 6px;
@@ -74,25 +76,24 @@
 }
 
 .payment-container button:hover {
-  background-color: #6f4f28; /* Darker caramel on hover */
-  transform: translateY(-3px); /* Button hover effect */
+  background-color: #356bb3; /* Darker blue on hover */
+  transform: translateY(-3px);
 }
 
 .payment-container span {
   font-size: 0.9em;
-  color: red;
+  color: #d9534f; /* Red for error text */
 }
 
 .payment-container button:disabled {
-  background-color: #d1b8a1; /* Disabled button (light caramel) */
+  background-color: #a3cbe8; /* Muted blue for disabled */
   cursor: not-allowed;
 }
 
 .payment-container button:disabled:hover {
-  background-color: #d1b8a1; /* No hover effect for disabled button */
+  background-color: #a3cbe8; /* No hover effect */
 }
 
-/* Filter feature styles */
 .filter-container {
   margin-bottom: 20px;
   display: flex;
@@ -102,43 +103,43 @@
 
 .filter-container label {
   font-weight: bold;
-  color: #8f6e4e; /* Caramel color */
+  color: #4a90e2;
 }
 
 .filter-container select {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #c2a97d;
-  background-color: #fdf5e6; /* Light caramel fill */
+  border: 1px solid #97c3e6;
+  background-color: #f0f8ff;
   font-size: 1em;
-  color: #4e4b3e; /* Deep brown text */
+  color: #2b3e50;
 }
 
 .filter-container select:focus {
-  border-color: #8f6e4e; /* Darker caramel on focus */
+  border-color: #4a90e2;
   outline: none;
-  background-color: #fff0d4;
+  background-color: #e3f2ff;
 }
 
 @media (max-width: 768px) {
   .payment-container {
-    padding: 15px;
+      padding: 15px;
   }
 
   .payment-container h1 {
-    font-size: 2em;
+      font-size: 2em;
   }
 
   .payment-container h2 {
-    font-size: 1.5em;
+      font-size: 1.5em;
   }
 
   .payment-container input {
-    padding: 10px;
+      padding: 10px;
   }
 
   .payment-container button,
   .filter-container select {
-    padding: 10px 18px;
+      padding: 10px 18px;
   }
 }

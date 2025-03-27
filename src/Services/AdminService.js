@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const API_URL = "https://localhost:7201/api/Admin/users";
 const OP_API_URL = "https://localhost:7201/api/Admin/operators";
@@ -197,8 +198,6 @@ export const deleteBuses = async (id) => {
   }
 };
 
-
-//service for bus routes
 export const getBusRoutes = async (source, destination) => {
   if (!source || !destination) {
     throw new Error("Source and destination must be provided.");
@@ -213,8 +212,10 @@ export const getBusRoutes = async (source, destination) => {
     });
     return response.data;
   } catch (error) {
+    toast.error("BusRoute not available")
     console.error("Error fetching bus routes:", error);
     throw error;
+  
   }
 };
 

@@ -7,6 +7,7 @@ import {
   updateUsers,
   deleteUsers,
 } from "../Services/AdminService";
+import { toast } from "react-toastify";
 
 const User = () => {
   const [users, setUsers] = useState([]);  // Store users data
@@ -22,7 +23,6 @@ const User = () => {
   });
 
   const [isEdit, setIsEdit] = useState(false);  // Track edit state
-  const [editUserId, setEditUserId] = useState(null);  // Track current edit user ID
   const [errors, setErrors] = useState({
     userName: "",
     phoneNumber: "",
@@ -79,6 +79,7 @@ const User = () => {
         role: "",
         dateCreated: "",
       });
+      toast.success("A new user was created successfully!")
     } catch (error) {
       console.log("Error creating user:", error);
     }
@@ -95,7 +96,6 @@ const User = () => {
         )
       );
       setIsEdit(false);
-      setEditUserId(null);
       setNewUser({
         userId: 0,
         userName: "",
@@ -106,6 +106,7 @@ const User = () => {
         role: "",
         dateCreated: "",
       });
+      toast.success("User updated successfully!")
     } catch (error) {
       console.log("Error updating user:", error);
     }
@@ -113,7 +114,7 @@ const User = () => {
 
   const handleEdit = (user) => {
     setNewUser(user);  // Pre-fill the form with the selected user's data
-    setEditUserId(user.userId);  // Set the ID of the user being edited
+    setIsEdit(true);  // Set editing state to true
   };
 
   const handleDelete = async (id) => {
@@ -121,6 +122,7 @@ const User = () => {
       const token = localStorage.getItem('token');
       await deleteUsers(id, token);  // Call the delete user API
       setUsers(users.filter((user) => user.userId !== id));  // Remove deleted user from state
+      toast.success("User deleted successfully!")
     } catch (error) {
       console.log("Error deleting user:", error);
     }
@@ -133,93 +135,102 @@ const User = () => {
         {users.map((user) => (
           <li key={user.userId} className="user-container">
             <div>User Name : {user.userName}</div>
-            <div>Phone Number : {user.phoneNumber}</div>
-            <div>Gender : {user.gender}</div>
-            <div>Email : {user.email}</div>
-            <div>Address : {user.address}</div>
-            <div>Role : {user.role}</div>
-            <div>Date Created : {user.dateCreated}</div>
+            <div> Phone Number : {user.phoneNumber}</div>
+            <div> Gender : {user.gender}</div>
+            <div> Email : {user.email}</div>
+            <div> Address : {user.address}</div>
+            <div> Role : {user.role}</div>
+            <div> DateCreated : {user.dateCreated}</div>
 
+                
             <div className="buttons">
               <button className="edit-button" onClick={() => handleEdit(user)}>Edit</button>
               <button className="delete-button" onClick={() => handleDelete(user.userId)}>Delete</button>
             </div>
-
-            {editUserId === user.userId && (
-              <div className="user-info edit-form">
-                <h3>Edit User</h3>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    value={newUser.userName}
-                    onChange={(e) => setNewUser({ ...newUser, userName: e.target.value })}
-                  />
-                  {errors.userName && <span style={{ color: "Red" }}>{errors.userName}</span>}
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Phone Number"
-                    value={newUser.phoneNumber}
-                    onChange={(e) =>
-                      setNewUser({ ...newUser, phoneNumber: e.target.value })
-                    }
-                  />
-                  {errors.phoneNumber && <span style={{ color: "Red" }}>{errors.phoneNumber}</span>}
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Gender"
-                    value={newUser.gender}
-                    onChange={(e) => setNewUser({ ...newUser, gender: e.target.value })}
-                  />
-                  {errors.gender && <span style={{ color: "Red" }}>{errors.gender}</span>}
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={newUser.email}
-                    onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-                  />
-                  {errors.email && <span style={{ color: "Red" }}>{errors.email}</span>}
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Address"
-                    value={newUser.address}
-                    onChange={(e) => setNewUser({ ...newUser, address: e.target.value })}
-                  />
-                  {errors.address && <span style={{ color: "Red" }}>{errors.address}</span>}
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Role"
-                    value={newUser.role}
-                    onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-                  />
-                  {errors.role && <span style={{ color: "Red" }}>{errors.role}</span>}
-                </div>
-                <div>
-                  <input
-                    type="datetime-local"
-                    placeholder="Date Created"
-                    value={newUser.dateCreated}
-                    onChange={(e) => setNewUser({ ...newUser, dateCreated: e.target.value })}
-                  />
-                  {errors.dateCreated && <span style={{ color: "Red" }}>{errors.dateCreated}</span>}
-                </div>
-
-                <button className="edit-button" onClick={handleUpdate}>Update</button>
-              </div>
-            )}
+           
           </li>
         ))}
       </ul>
+
+      <div className="user-info">
+        <h2>{isEdit ? "Edit User" : "Add New User"}</h2>
+        <div>
+          <input
+            type="text"
+            placeholder="Name"
+            value={newUser.userName}
+            onChange={(e) => setNewUser({ ...newUser, userName: e.target.value })}
+          />
+          {errors.userName && <span style={{ color: "Red" }}>{errors.userName}</span>}
+        </div>
+       
+        <div>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={newUser.phoneNumber}
+            onChange={(e) =>
+              setNewUser({ ...newUser, phoneNumber: e.target.value })
+            }
+          />
+          {errors.phoneNumber && <span style={{ color: "Red" }}>{errors.phoneNumber}</span>}
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Gender"
+            value={newUser.gender}
+            onChange={(e) => setNewUser({ ...newUser, gender: e.target.value })}
+          />
+          {errors.gender && <span style={{ color: "Red" }}>{errors.gender}</span>}
+        </div>
+
+       
+        <div>
+          <input
+            type="email"
+            placeholder="Email"
+            value={newUser.email}
+            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+          />
+          {errors.email && <span style={{ color: "Red" }}>{errors.email}</span>}
+        </div>
+      
+        <div>
+          <input
+            type="text"
+            placeholder="Address"
+            value={newUser.address}
+            onChange={(e) => setNewUser({ ...newUser, address: e.target.value })}
+          />
+          {errors.address && <span style={{ color: "Red" }}>{errors.address}</span>}
+        </div>
+       
+        <div>
+          <input
+            type="text"
+            placeholder="Role"
+            value={newUser.role}
+            onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+          />
+          {errors.role && <span style={{ color: "Red" }}>{errors.role}</span>}
+        </div>
+       
+        <div>
+          <input
+            type="datetime-local"
+            placeholder="Date Created"
+            value={newUser.dateCreated}
+            onChange={(e) => setNewUser({ ...newUser, dateCreated: e.target.value })}
+          />
+          {errors.dateCreated && <span style={{ color: "Red" }}>{errors.dateCreated}</span>}
+        </div>
+       
+
+        <button className="edit-button" onClick={isEdit ? handleUpdate : handleCreate}>
+          {isEdit ? "Update" : "Add"}
+        </button>
+      </div>
     </div>
   );
 };

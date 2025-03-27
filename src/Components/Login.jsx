@@ -1,57 +1,67 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "./AuthContext";
-import { login as loginService } from "../Services/AuthService";
-import { toast } from "react-toastify";
-import './Login.css'
-import bus1 from '../images/bus1.jpg'
+import { login } from "../Services/AuthService"; // Make sure the service is updated
+import AuthContext from "../Components/AuthContext";
+import '../Components/Login.css' // Context to manage global auth state
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate;
+  const { setAuth } = useContext(AuthContext); // Using context to store user auth data globally
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const token = await loginService(username, password);
-      login(token);
-      toast.success("Login Success");
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        toast.error("Login failed: Invalid credentials");
-      } else {
-        toast.error("Login failed: An unexpected error occurred");
+      const { token, role } = await login(username, password);
+
+      // Save the token and role to AuthContext and localStorage
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+
+      // Redirect based on role
+      if (role === "Admin") {
+        navigate("/admins");
+      } else if (role === "User") {
+        navigate("/");
+      } else if (role === "BusOperator") {
+        navigate("/admins");
       }
+      setAuth({token, role})
+    } catch (error) {
+      console.error("Login failed", error);
     }
   };
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <i className="fas fa-user"></i>
-          <input
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <i className="fas fa-user"></i>
+            <input
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-          />
-        </div>
-        <div className="form-group">
-          <i className="fas fa-lock"></i>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+            />
+          </div>
+          <div className="form-group">
+            <i className="fas fa-lock"></i>
+              <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          
+         
+          <button type="submit">Login</button>
+        </form>
     </div>
+    
   );
 };
 
 export default Login;
-

@@ -19,10 +19,11 @@ const BookingHistory = () => {
     }
 
     try {
+      const token = localStorage.getItem('token');
       console.log('Auth Token:', auth); // Log the token to ensure it's correct
       const response = await axios.get(`https://localhost:7201/api/Booking/${userId}`, {
         headers: {
-          Authorization: `Bearer ${auth}`, // Send the token as a Bearer token
+          Authorization: `Bearer ${token}`, // Send the token as a Bearer token
         },
       });
 
@@ -49,12 +50,13 @@ const BookingHistory = () => {
 
   const handleCancelBooking = async (bookingId) => {
     try {
+      const token = localStorage.getItem('token');
       const response = await axios.put(
         `https://localhost:7201/api/Booking/${bookingId}`,
         {}, // No body is needed as the ID is passed in the URL
         {
           headers: {
-            Authorization: `Bearer ${auth}`, // Send the token as a Bearer token
+            Authorization: `Bearer ${token}`, // Send the token as a Bearer token
           }
         }
       );

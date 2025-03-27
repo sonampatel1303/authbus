@@ -3,7 +3,7 @@ import { getPayments, createPayments, updatePayments, deletePayments } from "../
 import './Paymentcrud.css'; // Import the specific stylesheet
 
 const Payment = () => {
-  const [payments, setPayments] = useState([]);
+  const [payments, setPayments] = useState([""]);
   const [filteredPayments, setFilteredPayments] = useState([]);
   const [filter, setFilter] = useState("all"); // Filter state
   const [newPayment, setNewPayment] = useState({

@@ -1,11 +1,9 @@
-/* Login.css */
-
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Arial', sans-serif; /* Improved font for readability */
+  font-family: 'Arial', sans-serif; /* Readable and clean font */
 }
 
 .container {
@@ -18,11 +16,11 @@ body, html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  backdrop-filter: blur(5px); /* Adds a blur effect to the background */
+  backdrop-filter: blur(6px); /* Slightly stronger blur effect */
 }
 
 form {
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(230, 230, 250, 0.9));
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(230, 230, 250, 0.9)); /* Light blue gradient */
   padding: 30px 40px;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -49,7 +47,7 @@ form {
 
 .form-header h2 {
   font-size: 24px;
-  color: #007bff;
+  color: #007bff; /* Bright blue for header */
   margin: 0;
 }
 
@@ -72,19 +70,31 @@ form {
   color: #888;
 }
 
+/* General Input Field */
 .form-group input {
-  width: 100%;
+  color: #000 !important; /* Black text color */
+  background-color: #fff !important; /* White background */
+  border: 1px solid #ddd !important; /* Light gray border */
+  box-shadow: none !important; /* Remove any previous box shadow */
   padding: 12px 12px 12px 45px; /* Adjust padding for icon */
-  border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
   transition: all 0.3s ease;
 }
 
+/* Focused Input Field */
 .form-group input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  outline: none;
+  color: #000 !important; /* Ensure black text remains on focus */
+  background-color: #fff !important; /* White background */
+  border: 1px solid #1e90ff !important; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.5) !important; /* Blue shadow */
+  outline: none; /* Remove default focus outline */
+}
+
+/* Input Hover State */
+.form-group input:hover {
+  border-color: #1e90ff !important; /* Blue border on hover */
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.5) !important; /* Blue shadow on hover */
 }
 
 button[type="submit"] {
@@ -92,7 +102,7 @@ button[type="submit"] {
   padding: 12px;
   font-size: 18px;
   font-weight: bold;
-  background: linear-gradient(45deg, #00ff26, #19b819);
+  background: linear-gradient(45deg, #2bce57, #003f7f); /* Blue gradient button */
   color: white;
   border: none;
   border-radius: 8px;
@@ -101,7 +111,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: linear-gradient(45deg, #2bce57, #003f7f);
+  background: linear-gradient(45deg, #00ff26, #19b819); /* Darker blue for hover */
   transform: translateY(-3px); /* Adds a subtle lift effect */
 }
 
@@ -117,7 +127,7 @@ button[type="submit"]:active {
 }
 
 .footer-text a {
-  color: #007bff;
+  color:  #007bff; /* Bright blue for links */
   text-decoration: none;
 }
 

@@ -1,6 +1,6 @@
 header {
-  background-color: #d2a679; /* Caramel background color */
-  color: #fff8e1; /* Light cream text color */
+  background-color:  #d2a679; /* Sky blue background color */
+  color:  #fff8e1; /* Light sky blue text color */
   padding: 5px 0; /* Reduce vertical padding to lower height */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
@@ -29,7 +29,7 @@ nav ul li {
 
 nav ul li a,
 nav ul li button {
-  color: #fff8e1; /* Light cream text color */
+  color: #fff8e1; /* Light sky blue text color */
   text-decoration: none;
   font-size: 14px; /* Slightly smaller font size */
   padding: 6px 12px; /* Reduce padding for smaller buttons */
@@ -41,22 +41,23 @@ nav ul li button {
 
 nav ul li a:hover,
 nav ul li button:hover {
-  background-color: #c49769; /* Slightly darker caramel on hover */
-  color: #fff; /* Brighten text color on hover */
+  background-color: #c49769; /* Slightly darker blue on hover */
+  color: #ffffff; /* Bright white text color on hover */
   border-radius: 4px;
 }
 
 .logo {
-  height: 40px; /* Reduce logo size */
-  width: 40px; /* Ensure the logo stays circular */
+  height: 64px; /* Increased logo height */
+  width: 64px; /* Ensure the logo stays circular */
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
-  border: 2px solid #fff8e1; /* Cream border for emphasis */
+  margin-right: 15px; /* Slightly increased margin for spacing */
+  border: 3px solid #fff8e1; /* Light sky blue border for emphasis */
 }
 
+
 nav ul li a.active {
-  color: #fff; /* White text for active link */
+  color: #fff; /* Bright white text for active link */
   font-weight: bold;
 }
 

@@ -6,12 +6,12 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("User"); // Default role
+  const [role, setRole] = useState(""); // Default role
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://localhost:7201/api/Authentication/register", {
+      const response = await axios.post("https://localhost:7247/api/Authentication/register", {
         username,
         email,
         password,
@@ -65,12 +65,20 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label>Role:</label>
+          {/* <label>Role:</label>
           <select value={role} onChange={(e) => setRole(e.target.value)}>
             <option value="User">User</option>
             <option value="Admin">Admin</option>
             <option value="BusOperator">Bus Operator</option>
-          </select>
+          </select> */}
+            <i className="fas fa-lock"></i>
+              <input
+                type="text"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                placeholder="Role"
+                required
+              />
         </div>
 
         <button type="submit">Register</button>

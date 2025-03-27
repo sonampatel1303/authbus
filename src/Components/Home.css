@@ -13,7 +13,7 @@ body {
 }
 
 .hero {
-  background: linear-gradient(135deg, #f4d6c6, #d4a373); /* Warm beige to soft terracotta gradient */
+  background: linear-gradient(135deg, #f4d6c6, #d4a373); /* Sky blue to soft darker blue gradient */
   color: #2e2e2e; /* Deep grey for contrast */
   padding: 60px 20px;
   border-radius: 12px;
@@ -25,17 +25,17 @@ body {
   font-size: 42px;
   font-weight: bold;
   margin-bottom: 15px;
-  color: #5c4a41; /* Earthy dark brown */
+  color: #5c4a41; /* Deep blue */
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 25px;
-  color: #6d5d54; /* Muted brown-grey for secondary text */
+  color: #6d5d54; /* Muted blue-grey for secondary text */
 }
 
 .cta-button {
-  background-color: #a67f5a; /* Warm caramel button */
+  background-color: #a67f5a; /* Sky blue button */
   color: white;
   padding: 14px 22px;
   font-size: 18px;
@@ -47,7 +47,7 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #8a684a; /* Darker caramel for hover effect */
+  background-color: #8a684a; /* Darker sky blue for hover effect */
   transform: translateY(-3px); /* Lift effect */
 }
 
@@ -71,24 +71,24 @@ body {
 .feature h2 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: #a67f5a; /* Accent caramel for feature titles */
+  color: #a67f5a; /* Accent blue for feature titles */
 }
 
 .feature p {
   font-size: 16px;
   margin-bottom: 15px;
-  color: #5c4a41; /* Dark earthy brown */
+  color: #5c4a41; /* Deep blue */
 }
 
 .feature a {
-  color: #8a684a; /* Muted caramel for links */
+  color: #8a684a; /* Muted blue for links */
   text-decoration: none;
   font-weight: bold;
 }
 
 .feature a:hover {
   text-decoration: underline;
-  color: #a67f5a; /* Brighter hover effect for links */
+  color: #a67f5a;; /* Brighter hover effect for links */
 }
 
 .feature:hover {
@@ -103,14 +103,20 @@ body {
   margin-bottom: 15px;
 }
 
+/* Header Logo */
+.header-logo {
+  max-height: 80px; /* Adjusted for larger logo */
+  margin: 10px auto;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .features {
-    flex-direction: column;
-    align-items: center;
+      flex-direction: column;
+      align-items: center;
   }
 
   .feature {
-    width: 90%; /* Make feature boxes take up more space on smaller screens */
+      width: 90%; /* Make feature boxes take up more space on smaller screens */
   }
 }
